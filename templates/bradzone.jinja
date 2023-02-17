@@ -1,19 +1,68 @@
 {% extends "base.html" %}
 {% block title %}Bradweb Home Page{% endblock %}
+
+<link rel="stylesheet" href="{{ url_for('static/css', filename='bradweb.css')}}"/>"
+
 {% block content %}
-<h1>Welcome to the Brad Zone</h1>
-<div id="tester" style="width:600px;height:250px;"></div>
-<script>
 
-    TESTER = document.getElementById('tester');
+<div style="width:100%; margin-bottom:50px">
+    <h2>Mandelbrot Parameters</h2>
+    <div style="float:left">
+        <form action="#" method="post">
+            <p>X Coordinate of center</p>
+            <p><input type="text" name="x1" value="0"/></p>
+            <p>Y Coordinate of center</p>
+            <p><input type="text" name="y1" value="0"/></p>
+            <p>Zoom Level</p>
+            <p><input type="text" name="zoom" value="1"/></p>
+            <p>Iterations</p>
+            <p><input type="text" name="iterations" value="500"/></p>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
-    Plotly.newPlot( TESTER, [{
+    <div style="float:left">
+        <form action="" method="post">
+            <input type="hidden" name="x1" value="-0.7756837699949401"/>
+            <input type="hidden" name="y1" value="-0.13646736999704"/>
+            <input type="hidden" name="zoom" value="1000"/>
+            <input type="hidden" name="iterations" value="500"/>
+            <input type="submit" value="Preset 1">
+        </form>
+    </div>
 
-    x: [1, 2, 3, 4, 5],
+    <div style="float:left">
+        <form action="" method="post">
+            <input type="hidden" name="x1" value="-0.001643721971153"/>
+            <input type="hidden" name="y1" value="-0.822467633298876"/>
+            <input type="hidden" name="zoom" value="1000"/>
+            <input type="hidden" name="iterations" value="500"/>
+            <input type="submit" value="Preset 2">
+        </form>
+    </div>
+</div>
 
-    y: [1, 2, 4, 8, 16] }], {
+<div style="clear:both"></div>
 
-    margin: { t: 0 } } );
+{% if mandelbrot %}
 
-</script>
+<div style="width:100%; margin-top:2em; margin-bottom:100px">
+    <h1>Generated Mandelbrot</h1>
+    <p>{{ mandelbrot }}</p>
+    <table class="mandelbrot-info">
+        <tr>
+            <td style="text-align:center">X</td>
+            <td style="text-align:center">Y</td>
+            <td style="text-align:center">Zoom</td>
+            <td style="text-align:center">Iterations</td>
+        </tr>
+        <tr>
+            {% for item in data %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+{% endif %}
+
 {% endblock %}
