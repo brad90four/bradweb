@@ -1,6 +1,13 @@
+# import base64
+
+# from io import BytesIO
 from string import capwords
 
 from flask import Flask, redirect, url_for, render_template, request
+# from matplotlib.figure import Figure
+
+from fractal_maker import plotter
+
 
 app = Flask(__name__)
 
@@ -9,10 +16,18 @@ def home():
     return render_template("home.jinja")
 
 
-@app.route("/bradzone")
+@app.route("/bradzone", methods=["POST", "GET"])
 def bradzone():
-    return render_template("bradzone.jinja")
-
+    if request.method == "POST":
+        x = float(request.form["x1"])
+        y = float(request.form["y1"])
+        zoom = int(request.form["zoom"])
+        iterations = int(request.form["iterations"])
+        image = plotter(x=x, y=y, zoom=zoom, iterations=iterations)
+        data = [x, y, zoom, iterations]
+        return render_template("bradzone.jinja", mandelbrot=image, data=data)
+    else:
+        return render_template("bradzone.jinja")
 
 @app.route("/<name>")
 def user(name):
