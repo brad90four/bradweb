@@ -15,10 +15,12 @@
         <script src="https://cdn.plot.ly/plotly-2.18.0.min.js"></script>
         
         <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
     </head>
     <body>
+        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navigation</a>
+            <a class="navbar-brand" href="#">Site Links</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,10 +45,16 @@
 
         <!-- Footer -->
         <footer>
-            <p>Author: Brad</p>
-            <p><a href="https://github.com/brad90four">GitHub</a></p>
-            <p>Discord: brad90four</p>
-            <p>This page uses <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja</a> and <a href="https://flask.palletsprojects.com/en/2.2.x/">Flask</a></p>
+            <table class="footer_table">
+                <tr>
+                    <td>Author: Brad</td>
+                    <td><a href="https://github.com/brad90four" class="footer-link">GitHub</a></td>
+                    <td><a href="discordapp.com/users/698273827448291379" class="footer-link">Discord</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3">This page uses <a href="https://jinja.palletsprojects.com/en/3.1.x/" class="footer-link">Jinja</a> and <a href="https://flask.palletsprojects.com/en/2.2.x/" class="footer-link">Flask</a>
+                </tr>
+            </table>
         </footer>
 
         <!-- Optional JavaScript -->

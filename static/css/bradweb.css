@@ -1,9 +1,46 @@
+body {
+    padding-bottom: 100px;
+    background-color: #8BE6D8;
+}
+
+.media {
+    display: table;
+}
+
+.showcase {
+    /* float: left; */
+    width: 50%;
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
+    z-index: 0;
     width: 100%;
     background-color:#6495ED;
-    color: white;
+    color: black;
     text-align: center;
+}
+
+.footer_table {
+    border-collapse: collapse;
+    border: 1px solid #013E62;
+    width: 100%;
+}
+
+td, tr {
+    border: 1px solid #013E62;
+    padding: 1%;
+}
+
+.footer-link {
+    color: #edcc26;   
+}
+
+.footer-link:visited {
+    color: #ed26c5;
 }
