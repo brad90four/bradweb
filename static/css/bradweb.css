@@ -5,6 +5,8 @@ body {
 
 .media {
     display: table;
+    align-items: center;
+    width: 100%;
 }
 
 .showcase {
@@ -43,4 +45,10 @@ td, tr {
 
 .footer-link:visited {
     color: #ed26c5;
+}
+
+
+.mandelbrot-info {
+    width: 100%;
+    white-space: nowrap;
 }
