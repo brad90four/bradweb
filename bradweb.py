@@ -1,15 +1,11 @@
-# import base64
-
-# from io import BytesIO
 from string import capwords
 
-from flask import Flask, redirect, url_for, render_template, request
-# from matplotlib.figure import Figure
+from flask import Flask, redirect, render_template, request, url_for
 
 from fractal_maker import plotter
 
-
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
@@ -29,6 +25,7 @@ def bradzone():
     else:
         return render_template("bradzone.jinja")
 
+
 @app.route("/<name>")
 def user(name):
     name = capwords(name)
@@ -47,4 +44,4 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
