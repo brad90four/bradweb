@@ -1,11 +1,11 @@
-from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
-import numpy as np
-
 import base64
 from io import BytesIO
-
 from typing import Union
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.figure import Figure
+
 
 def mandelbrot(
     height: int,
@@ -103,7 +103,8 @@ def plotter(
     zoom: int = 1,
     c: complex = None,
     iterations: int = 500,
-    cmap: str = "cubehelix", dpi: int = 300
+    cmap: str = "cubehelix",
+    dpi: int = 300,
 ) -> None:
     """Utility function to create an image from an array.
 
@@ -116,12 +117,7 @@ def plotter(
     fig = Figure()
     ax = fig.subplots()
     array = mandelbrot(
-        height=512,
-        width=512,
-        x=x,
-        y=y,
-        zoom=zoom,
-        max_iterations=iterations
+        height=512, width=512, x=x, y=y, zoom=zoom, max_iterations=iterations
     )
     ax.imshow(array, cmap)
     ax = plt.gca()
@@ -133,4 +129,3 @@ def plotter(
 
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"<img src='data:image/png;base64,{data}'/>"
-
