@@ -116,16 +116,13 @@ def plotter(
     """
     fig = Figure()
     ax = fig.subplots()
+    ax.set_axis_off()
     array = mandelbrot(
         height=512, width=512, x=x, y=y, zoom=zoom, max_iterations=iterations
     )
     ax.imshow(array, cmap)
-    ax = plt.gca()
-    ax.axes.xaxis.set_visible(False)
-    ax.axes.yaxis.set_visible(False)
-
     buf = BytesIO()
-    fig.savefig(buf, format="png")
+    fig.savefig(buf, format="png", bbox_inches="tight")
 
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"<img src='data:image/png;base64,{data}'/>"
